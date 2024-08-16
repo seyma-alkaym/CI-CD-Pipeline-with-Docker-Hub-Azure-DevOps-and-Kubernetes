@@ -1,4 +1,4 @@
-# Boat CI/CD Pipeline with Docker Hub, Azure DevOps, and Kubernetes
+# CI/CD Pipeline with Docker Hub, Azure DevOps, and Kubernetes
 
 This project is a CI/CD setup for a PHP-based Boat application. The pipeline is configured using Azure DevOps, Docker Hub, and Kubernetes, with the project being deployed using Minikube. Below are the detailed steps to set up and run the CI/CD pipeline.
 
