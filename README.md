@@ -5,16 +5,16 @@ This project is a CI/CD setup for a PHP-based Boat application. The pipeline is 
 ## Table of Contents
 
 - [Technologies Used](#technologies-used)
-- [Project Setup](#project-setup)
 - [Dockerfile Creation](#dockerfile-creation)
 - [Azure DevOps Pipeline Setup](#azure-devops-pipeline-setup)
   - [1. Create a New Project](#1-create-a-new-project)
   - [2. Configure Agent Pool](#2-configure-agent-pool)
-  - [3. Service Connection to Docker Hub](#3-service-connection-to-docker-hub)
-  - [4. Setup Database Connection](#4-setup-database-connection)
-  - [5. Initialize Git Repository](#5-initialize-git-repository)
-  - [6. Configuring Open Access for Pipelines](#6-configuring-open-access-for-pipelines)
-  - [7. Create and Run CI Pipeline](#7-create-and-run-ci-pipeline)
+  - [3. Install Docker on Agent Server](#3-install-docker-on-agent-server)
+  - [4. Service Connection to Docker Hub](#4-service-connection-to-docker-hub)
+  - [5. Setup Database Connection](#5-setup-database-connection)
+  - [6. Initialize Git Repository](#6-initialize-git-repository)
+  - [7. Configuring Open Access for Pipelines](#7-configuring-open-access-for-pipelines)
+  - [8. Create and Run CI Pipeline](#8-create-and-run-ci-pipeline)
 - [Kubernetes Deployment](#kubernetes-deployment)
 - [Pipeline Automation](#pipeline-automation)
 - [Conclusion](#conclusion)
@@ -31,24 +31,6 @@ This project is a CI/CD setup for a PHP-based Boat application. The pipeline is 
 - **Azure Database**: Cloud-based database service used to store application data.
 - **Visual Studio**: Integrated development environment (IDE) used for editing the project files.
 - **Linux**: Operating system used for the build agent in the CI/CD pipeline.
-
-## Project Setup
-
-1. **Create a New Project in Azure DevOps:**
-   - Go to Azure DevOps and create a new project.
-   - ![Screenshot Placeholder](screenshots/0.create-project.PNG)
-   - Navigate to the project settings to create a new pool named `mypool`.
-   - ![Screenshot Placeholder](screenshots/1-pool.PNG)
-   - Add a Linux agent to this pool, hosted on a virtual server in VMware Workstation.
-
-2. **Install Docker on Agent Server:**
-   - Install `Docker` and `zip` command on the server by running the following commands:
-
-     ```bash
-     sudo apt-get update
-     sudo apt-get install -y docker.io
-     sudo apt install zip
-     ```
 
 ## Dockerfile Creation
 
@@ -92,7 +74,17 @@ This project is a CI/CD setup for a PHP-based Boat application. The pipeline is 
 - Create a new pool named `mypool` and configure it to include Linux agent hosted on VMware Workstation.
 - ![Screenshot Placeholder](screenshots/1-pool.PNG)
 
-### 3. Service Connection to Docker Hub
+### 3. Install Docker on Agent Server
+
+- Install `Docker` and `zip` command on the server by running the following commands:
+
+     ```bash
+     sudo apt-get update
+     sudo apt-get install -y docker.io
+     sudo apt install zip
+     ```
+
+### 4. Service Connection to Docker Hub
 
 - In **Project Settings > Service Connections**, create a new service connection of type `Docker Hub`.
 - ![Screenshot Placeholder](screenshots/2.add-dockerhub.PNG)
@@ -100,12 +92,12 @@ This project is a CI/CD setup for a PHP-based Boat application. The pipeline is 
 - ![Screenshot Placeholder](screenshots/3.access-token-docker.PNG)
 - ![Screenshot Placeholder](screenshots/4.service-config.PNG)
 
-### 4. Setup Database Connection
+### 5. Setup Database Connection
 
 - The database connection is handled by **Azure Database**.
 - Modify the `connection.php` file to include your database credentials. I create an example file named [connection-example.php](boat-project/database/connection-example.php) to keep my credentials secure.
 
-### 5. Initialize Git Repository
+### 6. Initialize Git Repository
 
 - Initialize a Git repository for project in `Azure DevOps`.
 - ![Screenshot Placeholder](screenshots/7.push-project.PNG)
@@ -114,7 +106,7 @@ This project is a CI/CD setup for a PHP-based Boat application. The pipeline is 
 - Verify that the files are successfully pushed by checking the **Repos** section in **Azure DevOps**.
 - ![Screenshot Placeholder](screenshots/9.Repos.PNG)
 
-### 6. Configuring Open Access for Pipelines
+### 7. Configuring Open Access for Pipelines
 
 In Azure DevOps, setting up open access allows all pipelines within your project to use a specific agent pool without requiring additional permissions. This streamlines the CI/CD process, ensuring that your pipelines have the necessary resources to run. Here's how you can configure this:
 
@@ -137,7 +129,7 @@ In Azure DevOps, setting up open access allows all pipelines within your project
 
 This step ensures that your pipelines can run seamlessly using the designated agent pool, streamlining the CI/CD process in **Azure DevOps** project.
 
-### 7. Create and Run CI Pipeline
+### 8. Create and Run CI Pipeline
 
 - Create a new repository in Docker Hub for storing the Docker image.
 - ![Screenshot Placeholder](screenshots/10.create-repo-dockerhub.PNG)
