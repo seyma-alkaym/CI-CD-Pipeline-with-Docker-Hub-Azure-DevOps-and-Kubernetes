@@ -133,7 +133,7 @@ This step ensures that your pipelines can run seamlessly using the designated ag
 
 - Create a new repository in Docker Hub for storing the Docker image.
 - ![Screenshot Placeholder](screenshots/10.create-repo-dockerhub.PNG)
--Start creating a CI pipeline in **Azure DevOps**.
+- Start creating a CI pipeline in **Azure DevOps**.
 - ![Screenshot Placeholder](screenshots/11.create-pipeline.PNG)
 Use the following sample [YAML file](boat-project\azure-pipelines.yml) for pipeline:
 
