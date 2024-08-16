@@ -176,7 +176,7 @@ This step ensures that your pipelines can run seamlessly using the designated ag
 - Before running the pipeline, ensure the agent is running by executing the ./run.sh script on your agent server.
 - ![Screenshot Placeholder](screenshots/15.pipeline-in-agent.PNG)
 
-- Verify the Docker Image: on Docker Hub repository the latest tag should be present.
+- Verify the Docker Image: on Docker Hub repository the `latest` tag should be present.
 - ![Screenshot Placeholder](screenshots/16.image-in-dockerhun-repo.PNG)
 
 ## Kubernetes Deployment
