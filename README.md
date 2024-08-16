@@ -135,7 +135,7 @@ This step ensures that your pipelines can run seamlessly using the designated ag
 - ![Screenshot Placeholder](screenshots/10.create-repo-dockerhub.PNG)
 - Start creating a CI pipeline in **Azure DevOps**.
 - ![Screenshot Placeholder](screenshots/11.create-pipeline.PNG)
-Use the following sample [YAML file](boat-project\azure-pipelines.yml) for pipeline:
+- Use the following sample [YAML file](boat-project\azure-pipelines.yml) for pipeline:
 
    ```yaml
    # Docker
@@ -173,7 +173,7 @@ Use the following sample [YAML file](boat-project\azure-pipelines.yml) for pipel
 - Save and run the pipeline.
 - ![Screenshot Placeholder](screenshots/14.pipeline-in-azure.PNG)
 
-- Before running the pipeline, ensure the agent is running by executing the ./run script on your agent server.
+- Before running the pipeline, ensure the agent is running by executing the ./run.sh script on your agent server.
 - ![Screenshot Placeholder](screenshots/15.pipeline-in-agent.PNG)
 
 - Verify the Docker Image: on Docker Hub repository the latest tag should be present.
