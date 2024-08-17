@@ -8,7 +8,7 @@ This project is a CI/CD setup for a PHP-based Boat application. The pipeline is 
 - [Dockerfile Creation](#dockerfile-creation)
 - [Azure DevOps Pipeline Setup](#azure-devops-pipeline-setup)
   - [1. Create a New Project](#1-create-a-new-project)
-  - [2. Configure Agent Pool](#2-configure-agent-pool)
+  - [2. Configure Agent Connection in Azure DevOps](#2-configure-agent-connection-in-azure-devops)
   - [3. Install Docker on Agent Server](#3-install-docker-on-agent-server)
   - [4. Creating a Docker Registry Service Connection](#4-creating-a-docker-registry-service-connection)
   - [5. Setup Database Connection](#5-setup-database-connection)
@@ -16,7 +16,10 @@ This project is a CI/CD setup for a PHP-based Boat application. The pipeline is 
   - [7. Configuring Open Access for Pipelines](#7-configuring-open-access-for-pipelines)
   - [8. Create and Run CI Pipeline](#8-create-and-run-ci-pipeline)
 - [Kubernetes Deployment](#kubernetes-deployment)
+  - [1. Deploy Application with Kubernetes](#1-deploy-application-with-kubernetes)
+  - [2. Verify Deployment](#2-verify-deployment)
 - [Pipeline Automation](#pipeline-automation)
+  - [Automatic Pipeline Trigger](#automatic-pipeline-trigger)
 - [Conclusion](#conclusion)
 
 ## Technologies Used
@@ -68,11 +71,44 @@ This project is a CI/CD setup for a PHP-based Boat application. The pipeline is 
 - Create a new project in Azure DevOps.
 - ![Screenshot Placeholder](screenshots/0.create-project.PNG)
 
-### 2. Configure Agent Pool
+### 2. Configure Agent Connection in Azure DevOps
 
-- Navigate to **Project Settings > Agent Pools**.
-- Create a new pool named `mypool` and configure it to include Ubuntu self-agent hosted on VMware Workstation.
-- ![Screenshot Placeholder](screenshots/1-pool.PNG)
+1. **Configure Agent Pool:**
+   - In Azure DevOps project, go to **Project Settings** located at the bottom left of the sidebar.
+   - Under **Pipelines**, select **Agent pools**.
+   - Create a new pool named `mypool` and configure it to include Ubuntu self-agent hosted on VMware.
+   - ![Screenshot Placeholder](screenshots/1-pool.PNG)
+
+2. **Select Pool:**
+   - Click on the pool you configured, `mypool`.
+
+3. **Add a New Agent:**
+   - In the `mypool` settings, under the **Agents** tab, click on the **New agent** button at the top right corner.
+   - ![Screenshot Placeholder](screenshots/new-agent.PNG)
+
+4. **Download the Agent Package:**
+   - Follow the instructions to download the agent package suitable for your operating system.
+   - Extract the downloaded package to your desired directory on the machine that will host the agent.
+
+5. **Configure the Agent:**
+   - Run the `config.sh` (Linux)
+   - Provide the following information when prompted:
+     - **Server URL:** The URL of your Azure DevOps organization.
+     - **Authentication:** Enter a Personal Access Token (PAT) that has the necessary permissions.
+     - **Agent Pool:** Specify `mypool`.
+     - **Agent Name:** Provide a unique name for this agent (e.g., `ubt-agent`).
+
+6. **Run the Agent:**
+   - Once the configuration is complete, run the agent using the following command:
+     - On Linux: `./run.sh`
+     - ![Screenshot Placeholder](screenshots/run-agent.PNG)
+
+7. **Verify the Agent:**
+   - Return to the **mypool** in Azure DevOps and refresh the page. New agent listed under the **Agents** tab with its status as **Online**.
+   - ![Screenshot Placeholder](screenshots/self-agent.PNG)
+
+- New agent is now added to `mypool` and is ready to execute pipeline tasks.
+
 
 ### 3. Install Docker on Agent Server
 
