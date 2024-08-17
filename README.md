@@ -86,7 +86,7 @@ This project is a CI/CD setup for a PHP-based Boat application. The pipeline is 
 
 ### 4. Service Connection to Docker Hub
 
-- In **Project Settings > Service Connections**, create a new service connection of type `Docker Hub`.
+- In **Project Settings > Service Connections**, create a new service connection of type `Docker Registery`.
 - ![Screenshot Placeholder](screenshots/2.add-dockerhub.PNG)
 - Use Docker Hub credentials but replace the password with an `Access Token` generated from Docker Hub account.
 - ![Screenshot Placeholder](screenshots/3.access-token-docker.PNG)
