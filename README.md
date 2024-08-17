@@ -27,7 +27,7 @@ This project is a CI/CD setup for a PHP-based Boat application. The pipeline is 
 - **Docker Hub**: Container registry used to store and manage Docker images.
 - **Kubernetes**: Container orchestration platform used for deploying and managing the application.
 - **Minikube**: Local Kubernetes environment used for development and testing.
-- **VMware Workstation**: Virtualization software used to host the Linux agent for Azure DevOps.
+- **VMware Workstation**: Virtualization software used to host the Ubuntu self-agent for Azure DevOps.
 - **Azure Database**: Cloud-based database service used to store application data.
 - **Visual Studio**: Integrated development environment (IDE) used for editing the project files.
 - **Linux**: Operating system used for the build agent in the CI/CD pipeline.
@@ -71,7 +71,7 @@ This project is a CI/CD setup for a PHP-based Boat application. The pipeline is 
 ### 2. Configure Agent Pool
 
 - Navigate to **Project Settings > Agent Pools**.
-- Create a new pool named `mypool` and configure it to include Linux agent hosted on VMware Workstation.
+- Create a new pool named `mypool` and configure it to include Ubuntu self-agent hosted on VMware Workstation.
 - ![Screenshot Placeholder](screenshots/1-pool.PNG)
 
 ### 3. Install Docker on Agent Server
@@ -101,7 +101,7 @@ This project is a CI/CD setup for a PHP-based Boat application. The pipeline is 
 
 - Initialize a Git repository for project in `Azure DevOps`.
 - ![Screenshot Placeholder](screenshots/7.push-project.PNG)
-- Commit and push your code to the newly created Azure DevOps repository.
+- Commit and push code to the newly created Azure DevOps repository.
 - ![Screenshot Placeholder](screenshots/8.commit-changes.PNG)
 - Verify that the files are successfully pushed by checking the **Repos** section in **Azure DevOps**.
 - ![Screenshot Placeholder](screenshots/9.Repos.PNG)
@@ -127,7 +127,7 @@ In Azure DevOps, setting up open access allows all pipelines within your project
    - In the confirmation dialog, click on **Open access** to proceed.
    - Once confirmed, all pipelines in your project will be able to utilize the resources in this agent pool without additional configuration.
 
-This step ensures that your pipelines can run seamlessly using the designated agent pool, streamlining the CI/CD process in **Azure DevOps** project.
+This step ensures that pipelines can run seamlessly using the designated agent pool, streamlining the CI/CD process in **Azure DevOps** project.
 
 ### 8. Create and Run CI Pipeline
 
@@ -173,7 +173,7 @@ This step ensures that your pipelines can run seamlessly using the designated ag
 - Save and run the pipeline.
 - ![Screenshot Placeholder](screenshots/14.pipeline-in-azure.PNG)
 
-- Before running the pipeline, ensure the agent is running by executing the ./run.sh script on your agent server.
+- Before running the pipeline, ensure the agent is running by executing the ./run.sh script on self-agent server.
 - ![Screenshot Placeholder](screenshots/15.pipeline-in-agent.PNG)
 
 - Verify the Docker Image: on Docker Hub repository the `latest` tag should be present.
