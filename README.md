@@ -10,7 +10,7 @@ This project is a CI/CD setup for a PHP-based Boat application. The pipeline is 
   - [1. Create a New Project](#1-create-a-new-project)
   - [2. Configure Agent Pool](#2-configure-agent-pool)
   - [3. Install Docker on Agent Server](#3-install-docker-on-agent-server)
-  - [4. Service Connection to Docker Hub](#4-service-connection-to-docker-hub)
+  - [4. Creating a Docker Registry Service Connection](#4-creating-a-docker-registry-service-connection)
   - [5. Setup Database Connection](#5-setup-database-connection)
   - [6. Initialize Git Repository](#6-initialize-git-repository)
   - [7. Configuring Open Access for Pipelines](#7-configuring-open-access-for-pipelines)
@@ -84,13 +84,32 @@ This project is a CI/CD setup for a PHP-based Boat application. The pipeline is 
      sudo apt install zip
      ```
 
-### 4. Service Connection to Docker Hub
+### 4. Creating a Docker Registry Service Connection
 
-- In **Project Settings > Service Connections**, create a new service connection of type `Docker Registry`.
-- ![Screenshot Placeholder](screenshots/2.add-dockerhub.PNG)
-- Use Docker Hub credentials but replace the password with an `Access Token` generated from Docker Hub account.
-- ![Screenshot Placeholder](screenshots/3.access-token-docker.PNG)
-- ![Screenshot Placeholder](screenshots/4.service-config.PNG)
+To enable your Azure DevOps pipeline to push images to Docker Hub, you'll need to create a service connection of type **Docker Registry**. Here's how can do it:
+
+1. **Navigate to Service Connections:**
+   - In your Azure DevOps project, go to **Project Settings** at the bottom left of the sidebar.
+   - Under **Pipelines**, select **Service connections**.
+
+2. **Create a New Service Connection:**
+   - Click on **New service connection**.
+   - Choose **Docker Registry** as the service connection type.
+   - ![Screenshot Placeholder](screenshots/2.add-dockerhub.PNG)
+
+3. **Configure Docker Hub Credentials:**
+   - In the service connection form, select **Docker Hub** from the Docker Registry options.
+   - Enter your **Docker Hub username**.
+   - For the **password** field, use an **Access Token** generated from Docker Hub account instead of Docker Hub password. This is more secure and recommended by Docker.
+   - ![Screenshot Placeholder](screenshots/3.access-token-docker.PNG) 
+
+4. **Complete the Setup:**
+   - After entering the required details, click on **Verify and save** to complete the creation of the service connection.
+   - ![Screenshot Placeholder](screenshots/4.service-config.PNG)
+
+#### Alternative: Using Azure Container Registry
+
+If you have an Azure account and prefer to use Azure services, you can also create a service connection using **Azure Container Registry** instead of Docker Hub. Azure Container Registry is integrated into the Azure ecosystem and can be a more seamless option if you're already using other Azure services.  
 
 ### 5. Setup Database Connection
 
