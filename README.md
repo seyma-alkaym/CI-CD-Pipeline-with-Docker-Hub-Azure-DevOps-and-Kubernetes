@@ -43,23 +43,24 @@ This project is a CI/CD setup for a PHP-based Boat application. The pipeline is 
 - Example `Dockerfile`:
 
      ```Dockerfile
-     # PHP 7.3 sürümünü baz alan resmi PHP Apache görüntüsünü kullanýyoruz
+     # Using the official PHP Apache image based on PHP 7.3 version
      FROM php:7.3.33-apache
 
-     # Apache mod_rewrite modülünü etkinleþtiriyoruz (URL yeniden yazýmý için gereklidir)
+     # Enable Apache mod_rewrite module (required for URL rewriting)
      RUN a2enmod rewrite
 
-     # PHP eklenti gereksinimlerini kuruyoruz (örneðin: mysqli, pdo_mysql gibi)
+     # Install PHP extension requirements (e.g., mysqli, pdo_mysql)
      RUN docker-php-ext-install mysqli pdo_mysql
 
-     # Çalýþma dizinini /var/www/html/caiwl altýna ayarlýyoruz
+     # Set the working directory to /var/www/html/boat
      WORKDIR /var/www/html/boat
 
-     # Lokal projenizin dosyalarýný Docker görüntüsüne kopyalýyoruz
+     # Copy the files of your local project into the Docker image
      COPY . .
 
-     # Docker konteynerý açýldýðýnda Apache'yi baþlatýyoruz
+     # Start Apache when the Docker container starts
      CMD ["apache2-foreground"]
+
      ```
 
 - ![Screenshot Placeholder](screenshots/6.project-visual-studio.PNG)
