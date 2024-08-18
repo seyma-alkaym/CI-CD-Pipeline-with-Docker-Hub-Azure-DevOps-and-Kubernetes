@@ -39,7 +39,7 @@ This project is a CI/CD setup for a PHP-based Boat application. The pipeline is 
 
 ### Create a Dockerfile
 
-- In project directory, create a `Dockerfile` to build the Docker image.
+- In project directory, create a [`Dockerfile`](boat-project/Dockerfile) to build the Docker image.
 - Example `Dockerfile`:
 
      ```Dockerfile
